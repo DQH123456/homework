@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <form id="form">
+        <input type="text" id="store" placeholder="请输入想查找的商品" autofocus>
+        <input type="button" value="搜索" onclick="saveStorage('store')">
+        <p>最近搜索</p>
+        <div id="div"></div>
+        <p id="msg"></p>
+        <img src = "guanbi.jpg" onclick="clearStorage('msg');"style="margin-left: 200px;">
+    </form>
+</body>
+<script type="text/javascript">
+    var div = document.getElementById("div");
+
+    function saveStorage(id) {
+        var data = document.getElementById(id).value;
+        var time = new Date().getTime();
+        localStorage.setItem(time, data);
+        loadStorage('msg');
+    }
+
+    function loadStorage(id) {
+        var result ='<div style:"background-color:#A9A9A9">' ;
+        for (var i =(localStorage.length)-1;i>=0; i--) {
+            var key = localStorage.key(i);
+            var value = localStorage.getItem(key);
+            var date = new Date();
+            date.setTime(key); //使用 setTime() 向 1970/01/01 添加毫秒，并显示新的日期和时间。
+            var datestr = date.toGMTString();
+            result += value;
+        }
+        
+        result += "<span id = 'record' >"+value+"</span>";
+        var target = document.getElementById(id);
+        target.innerHTML = result;
+    }
+
+    function clearStorage() {
+        localStorage.clear();
+        alert("全部数据被清除。");
+        loadStorage('msg');
+    }
+</script>
+</html>
