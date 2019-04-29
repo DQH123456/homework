@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body >
+<div><img src="images/0.jpg" alt="" style="width: 20%"></div>
+<canvas id="myCanvas"></canvas>
+<script !src="">
+    //定义变量
+    /*
+     isFlag：用来控制鼠标移动，要不然当鼠标一移动到canvas上，
+     就触发鼠标移动事件。
+    * */
+    var isFlag = false;
+    var moveX,moveY;
+    //声明图片，刮开涂层后显示的图片
+    var img = new Image();
+    var myCanvas = document.getElementById("myCanvas");
+    var ctx = myCanvas.getContext('2d');
+//  设置canvas的宽度,高度和背景颜色。
+    myCanvas.width = "400";
+    myCanvas.height = "400";
+//  设置线条宽度
+    ctx.lineWidth = 50;
+//  设置遮罩
+    ctx.beginPath();
+    ctx.fillStyle = "#e2e2e2"
+    ctx.fillRect(0,0,400,400);
+    /*
+        说明：下面是鼠标移动事件
+    * */
+//    鼠标按下左键
+    myCanvas.addEventListener("mousedown",function (e) {
+        console.log("开始" ,e)
+        isFlag = true;
+//      获取鼠标初始坐标，并且减去偏移量
+        moveX = e.clientY - myCanvas.offsetLeft;
+        moveY = e.clientY - myCanvas.offsetTop;
+        ctx.moveTo(moveX,moveY);
+    });
+//    鼠标移动
+    myCanvas.addEventListener("mousemove",function (e) {
+        if (isFlag){
+            console.log("移动" ,e);
+//          在源图像之外显示目标图像。只有源图像之外的目标图像部分会被显示，源图像是透明的。
+            ctx.globalCompositeOperation = "destination-out";
+//          设置橡皮擦形状
+            ctx.lineCap = "round";
+            ctx.beginPath();
+//          橡皮擦根据鼠标的移动进行擦除。
+            ctx.lineTo(e.clientX-myCanvas.offsetLeft,e.clientY-myCanvas.offsetTop)
+            ctx.stroke();
+//          在源图像上显示目标图像。
+            ctx.globalCompositeOperation = "destination-over";
+//          图片路径
+            img.src = "images/0.jpg"
+            img.onload = function () {
+                //  设置灰色遮罩
+                ctx.beginPath();
+                ctx.drawImage(img,0,0,400,400);
+            }
+        }
+    });
+//    鼠标松开左键
+    myCanvas.addEventListener("mouseup",function (e) {
+        console.log("结束" ,e)
+        isFlag = false;
+    });
+
+</script>
+</body>
+</html>
