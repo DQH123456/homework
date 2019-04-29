@@ -5,26 +5,25 @@
     <title>Title</title>
 </head>
 <body >
-<div><img src="images/0.jpg" alt="" style="width: 20%"></div>
 <canvas id="myCanvas"></canvas>
 <script !src="">
     //定义变量
     /*
      isFlag：用来控制鼠标移动，要不然当鼠标一移动到canvas上，
      就触发鼠标移动事件。
-    * */
+    */
     var isFlag = false;
     var moveX,moveY;
     //声明图片，刮开涂层后显示的图片
     var img = new Image();
     var myCanvas = document.getElementById("myCanvas");
     var ctx = myCanvas.getContext('2d');
-//  设置canvas的宽度,高度和背景颜色。
+    //设置canvas的宽度,高度和背景颜色。
     myCanvas.width = "400";
     myCanvas.height = "400";
-//  设置线条宽度
+    //设置线条宽度
     ctx.lineWidth = 50;
-//  设置遮罩
+    //设置遮罩
     ctx.beginPath();
     ctx.fillStyle = "#e2e2e2"
     ctx.fillRect(0,0,400,400);
@@ -55,7 +54,7 @@
 //          在源图像上显示目标图像。
             ctx.globalCompositeOperation = "destination-over";
 //          图片路径
-            img.src = "images/0.jpg"
+            img.src = "0.jpg"
             img.onload = function () {
                 //  设置灰色遮罩
                 ctx.beginPath();
