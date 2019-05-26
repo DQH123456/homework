@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Transitions功能的使用示例</title>
+    <style type="text/css">
+        .cir{
+            position: absolute;
+            float: right;
+            margin-left: 330px;
+            margin-top: 20px;
+            border-radius: 20px;
+            background-color: rgb(231, 104, 20);
+            width: 40px;
+        }
+        .a1{
+            margin-left: 5px;
+            text-align:center;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bolder;
+        }
+        img{
+            width: 400px;
+            height: 280px;
+        }
+	    .tour{
+            width: 400px;
+            height: 480px;
+            overflow:hidden;
+            border-style: solid;
+            border-width: 5px;
+            border-color:rgb(189, 182, 182);
+		}
+		.tour:hover{
+            overflow:hidden;
+		}
+         /* .zhanqiao:hover{
+			transform: scale(1.3);
+            transition-duration:1s;
+        }  */
+        .zhanqiao:hover{
+			transform: scale(1.3);
+            transition-duration:1s;
+        } 
+        .qingdao:hover{
+            position: relative;
+            margin-top: -150px;
+            height: 300px;
+            transition-duration:1s;
+        }
+        .qingdao{
+            background-color: #fff;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        /* .qingdao:hover{
+            position: relative;
+            margin-top: -150px;
+            height: 300px;
+            transition-duration:1s;
+        } */
+        .p1{
+            font-size: 20px;
+            font-weight: bolder;
+
+        }
+        .p2{
+            font-size: 18px;
+            color: rgb(230, 116, 23);
+        }
+        .p3{
+            font-size: 10px;
+            color: #fff;
+        }
+        .p3:hover{
+            font-size: 16px;
+            color: gray;
+        }
+        .p4{
+            color: rgb(163, 159, 159);
+            font-size: 14px;
+            margin-left: 20px;
+        }
+	</style>
+</head>
+<body>
+        <div class="cir">
+                <a class="a1">15</a>
+                <a class="a1">五月</a>
+        </div>
+	<div class="tour">
+        <div class="zhezhao">
+        <div class="zhanqiao">
+            <img src="zhanqiao.jpg" class="img">
+        </div>    
+        </div>
+        <div class="qingdao">
+            <p class="p1">青岛栈桥</p>
+            <p class="p2">国家AAAA级旅游景区</p>
+            <p class="p3"> 青岛栈桥是青岛海滨风景区的景点之一，是国
+                务院于1982年首批公布的国家级风景名胜区。
+                青岛栈桥位于游人如织的青岛中山路南端，桥
+                身从海岸探入如弯月般的青岛湾深处。桥身供
+                游人参观并在此停靠旅游船，由此乘船可看海
+                上青岛。</p>
+            <p class="p4">10分钟前<span class="p4">123评论</span></p>
+        </div>
+
+    </div>
+</body>
+</html>
